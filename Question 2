@@ -1,0 +1,33 @@
+
+using System;
+using System.Text.RegularExpressions;
+class Program
+{
+ static void Main(string[] args)
+ {
+ Console.WriteLine("Enter a string:");
+ string input = Console.ReadLine();
+ string[] validDates = FindValidDatesInString(input);
+ Console.WriteLine("Valid dates found in the string:");
+ foreach (string date in validDates)
+ {
+ Console.WriteLine(date);
+ }
+ }
+ static string[] FindValidDatesInString(string inputString)
+ {
+ // Define the regular expression pattern to find valid dates (MMDDYYYY)
+ string DatePattern = @"\b(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])(19|20)\d{2}\b";
+ // Create a regex object
+ Regex regex = new Regex(DatePattern);
+ // Find matches in the input string
+ MatchCollection matches = regex.Matches(inputString);
+ // Extract matched dates
+ string[] dates = new string[matches.Count];
+ for (int i = 0; i < matches.Count; i++)
+ {
+ dates[i] = matches[i].Value;
+ }
+ return dates;
+ }
+}
