@@ -1,0 +1,28 @@
+
+using System;
+class Triangle
+{
+ static void Main(string[] args)
+ {
+ Console.WriteLine("Enter the height of the triangle:");
+ int height = Convert.ToInt32(Console.ReadLine());
+ PrintEquilateralTriangle(height);
+ }
+ static void PrintEquilateralTriangle(int height)
+ {
+ for (int i = 0; i < height; i++)
+ {
+ // Print spaces before printing asterisks
+ for (int j = 0; j < height - i - 1; j++)
+ {
+ Console.Write(" ");
+ }
+ // Print asterisks
+ for (int j = 0; j <= i; j++)
+ {
+ Console.Write("* ");
+ }
+ Console.WriteLine();
+ }
+ }
+}
